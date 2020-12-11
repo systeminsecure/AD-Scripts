@@ -4,6 +4,7 @@
 #       Script: Remove-NestedGroups.ps1
 #       Author: Jason Dance
 #       Date: Jan 28, 2020
+#       Last Updated: Dec 11, 2020
 #       Description: This script can be essentially used to "de-nest" your groups!
 #                    Pick a group from the list presented, and the script will pull users from nested groups in the original, and add the users to the group you picked. 
 #                    This will also pull users from groups nested in the nested groups and add them to the original group you picked.
@@ -11,6 +12,12 @@
 ########################################################################################################################################################################
 
 #>
+
+import-module activedirectory
+
+If (!(Get-Module ActiveDirectory)){
+write-host("Not able to load the Active Directory powershell module (is it installed?)   https://theitbros.com/install-and-import-powershell-active-directory-module") -BackgroundColor DarkRed
+break}
 
 $GroupCategory= (("Distribution","Security") | Out-GridView -Title "Select a group type:" -OutputMode Single)
 

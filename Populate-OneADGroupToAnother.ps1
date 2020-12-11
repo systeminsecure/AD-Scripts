@@ -3,13 +3,20 @@
 ########################################################################################################################################################################
 #       Script: Remove-NestedGroups.ps1
 #       Author: Jason Dance
-#       Date: Jan 28, 2020
+#       Created Date: Jan 28, 2020
+#       Last Updated: Dec 11, 2020
 #       Description: This script can be used to transfer the content of one group to another.
 #                    Pick a group from the list presented, and the script will pull the users from the source group and add them to the target group.
 #       Usage: Just run the script in Powershell or Powershell ISE. No arguments or switches are needed, just run the script and answer the prompts.
 ########################################################################################################################################################################
 
 #>
+
+import-module activedirectory
+
+If (!(Get-Module ActiveDirectory)){
+write-host("Not able to load the Active Directory powershell module (is it installed?)   https://theitbros.com/install-and-import-powershell-active-directory-module") -BackgroundColor DarkRed
+break}
 
 $GroupCategorySource= (("Distribution","Security") | Out-GridView -Title "Select a group type for the source:" -OutputMode Single)
 
