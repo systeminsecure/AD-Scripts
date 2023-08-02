@@ -1,6 +1,7 @@
 <#
 Script used to grab the last updated time from the LAPS attribute in AD for servers. 
-This is good to see which machines have a broken/misconfigured LAPS client
+This is good to see which machines have a broken/misconfigured LAPS client. 
+You can filter out servers by adding them to a group with the name "Powered Down" in it.
 systeminsecure 2023-08-01 v4
 #>
 
